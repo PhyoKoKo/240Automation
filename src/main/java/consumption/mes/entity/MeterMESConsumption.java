@@ -1,38 +1,57 @@
 package consumption.mes.entity;
 
+import java.util.HashMap;
+import java.util.Iterator;
+
+import universal.entity.Meter;
+
 public class MeterMESConsumption {
-	private String device_desc, ieee;
-	private String mes;
+	private Meter meter;
+	private double total_consumption;
+	private HashMap<String, ConsumptionUnit> mes_consumption; //ConsumptionUnit: count, consumption, avg_consumption
+
 	
-	public MeterMESConsumption(String ieee, String device_desc, String mes, double consumption){
-		this.ieee = ieee;
-		this.device_desc = device_desc;
-		this.mes = mes;
-		this.consumption = consumption;
+	public MeterMESConsumption(Meter meter){
+		this.setMeter(meter);
+		this.setMes_consumption(new HashMap<String, ConsumptionUnit>());
+		this.setTotal_consumption(0);
 	}
-	public String getDevice_desc() {
-		return device_desc;
+
+	public HashMap<String, ConsumptionUnit> getMes_consumption() {
+		return mes_consumption;
 	}
-	public void setDevice_desc(String device_desc) {
-		this.device_desc = device_desc;
+
+	public void setMes_consumption(HashMap<String, ConsumptionUnit> mes_consumption) {
+		this.mes_consumption = mes_consumption;
 	}
-	public String getIeee() {
-		return ieee;
+
+	public Meter getMeter() {
+		return meter;
 	}
-	public void setIeee(String ieee) {
-		this.ieee = ieee;
+
+	public void setMeter(Meter meter) {
+		this.meter = meter;
 	}
-	public String getMes() {
-		return mes;
+
+	public double getTotal_consumption() {
+		return total_consumption;
 	}
-	public void setMes(String mes) {
-		this.mes = mes;
+
+	public void setTotal_consumption(double total_consumption) {
+		this.total_consumption = total_consumption;
 	}
-	public double getConsumption() {
-		return consumption;
+
+	public void print(String prefix) {
+		String space = "----";
+		System.out.println(prefix + "Meter: " + this.meter.getIeee() + " total consumption: " + this.total_consumption);
+		Iterator<String> mes_list = this.mes_consumption.keySet().iterator();
+		while(mes_list.hasNext()){
+			String status = mes_list.next();
+			System.out.println(prefix + space + status + ": ");
+			System.out.println(prefix + space + space + "Count: " + mes_consumption.get(status).getCount());
+			System.out.println(prefix + space + space + "Consumption: " + mes_consumption.get(status).getConsumption());
+			System.out.println(prefix + space + space + "Average Consumption: " + mes_consumption.get(status).getAvg_consumption());
+		}
 	}
-	public void setConsumption(double consumption) {
-		this.consumption = consumption;
-	}
-	private double consumption;
+
 }

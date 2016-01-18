@@ -18,8 +18,8 @@ public class MESCapturer {
 		ArrayList<MES> MESlist = new ArrayList<MES>();
 		Connection conn = DBConnect.getConn_mes();
 		
-		String sql = "select * from " + MES_TABLE + " where EQP_ID = '" + tool 
-						+ "' and (trunc(start_time) = to_date('" + date + "', 'yyyy-mm-dd') or trunc(end_time) = to_date('" + date + "', 'yyyy-mm-dd')"
+		String sql = "select * from " + MES_TABLE + " where EQP_ID like '" + tool 
+						+ "%' and (trunc(start_time) = to_date('" + date + "', 'yyyy-mm-dd') or trunc(end_time) = to_date('" + date + "', 'yyyy-mm-dd')"
 						+ " or (trunc(start_time) < to_date('" + date + "', 'yyyy-mm-dd') and trunc(end_time) > to_date('" + date + "', 'yyyy-mm-dd')))";
 
 		try {
