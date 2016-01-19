@@ -4,10 +4,12 @@ import java.util.ArrayList;
 
 public class Tool {
 	private String tool;
+	private boolean isReference;
 	private ArrayList<Meter> meters;
 	
-	public Tool(String tool){
+	public Tool(String tool, boolean isRef){
 		this.setTool(tool);
+		this.setReference(isRef);
 		this.setMeters(new ArrayList<Meter>());
 	}
 
@@ -25,5 +27,13 @@ public class Tool {
 
 	public void setMeters(ArrayList<Meter> meters) {
 		this.meters = meters;
+	}
+
+	public boolean isReference() {
+		return isReference;
+	}
+
+	public void setReference(boolean isReference) {
+		this.isReference = isReference;
 	}
 }

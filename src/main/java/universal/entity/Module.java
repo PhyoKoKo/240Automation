@@ -10,7 +10,12 @@ public class Module {
 		this.setModule(module);
 		this.setToolgroups(new ArrayList<ToolGroup>());
 	}
-
+	public ToolGroup getToolGroup(String name){
+		for(int i = 0; i < toolgroups.size(); i++)
+			if(toolgroups.get(i).getToolgroup().equals(name))
+				return toolgroups.get(i);
+		return null;
+	}
 	public String getModule() {
 		return module;
 	}

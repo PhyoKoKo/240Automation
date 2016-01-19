@@ -2,6 +2,7 @@ package universal.entity;
 
 public class Meter {
 	private String ieee, device_desc;
+	
 	public Meter(String ieee){
 		this.setIeee(ieee);
 	}
@@ -21,4 +22,5 @@ public class Meter {
 	public void setIeee(String ieee) {
 		this.ieee = ieee;
 	}
+
 }

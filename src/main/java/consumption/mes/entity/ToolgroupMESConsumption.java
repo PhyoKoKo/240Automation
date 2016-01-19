@@ -47,8 +47,9 @@ public class ToolgroupMESConsumption {
 		}
 		
 		//calculate the waste for toolgroup&tool in each status
-		while(mes_list.hasNext()){
-			String status = mes_list.next();
+		Iterator<String> mes_list2 = mes.iterator();
+		while(mes_list2.hasNext()){
+			String status = mes_list2.next();
 			double min_avg_consumption = this.mes_consumption.get(status).getMin_avg_consumption();
 			double toolgroup_waste = 0;
 			
@@ -94,5 +95,27 @@ public class ToolgroupMESConsumption {
 
 	public void setTotal_consumption(double total_consumption) {
 		this.total_consumption = total_consumption;
+	}
+
+	public void print(String prefix) {
+		String space = "----";
+		System.out.println(prefix + "ToolGroup: " + this.toolgroup.getToolgroup() + " total consumption: " + this.total_consumption + " total waste: " + this.total_waste);
+		
+		Iterator<String> mes_list = this.mes_consumption.keySet().iterator();
+		while(mes_list.hasNext()){
+			String status = mes_list.next();
+			System.out.println(prefix + space + status + ": ");
+			System.out.println(prefix + space + space + "Count: " + mes_consumption.get(status).getCount());
+			System.out.println(prefix + space + space + "Consumption: " + mes_consumption.get(status).getConsumption());
+			System.out.println(prefix + space + space + "Average Consumption: " + mes_consumption.get(status).getAvg_consumption());
+			System.out.println(prefix + space + space + "Minimum Average Consumption: " + mes_consumption.get(status).getMin_avg_consumption());
+			System.out.println(prefix + space + space + "Waste: " + mes_consumption.get(status).getWaste());
+		}
+		System.out.println();
+		
+		for(int i = 0; i < this.tools.size(); i++){
+			tools.get(i).print(prefix + "----");
+			System.out.println();
+		}
 	}
 }

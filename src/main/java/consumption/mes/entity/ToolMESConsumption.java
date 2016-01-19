@@ -58,10 +58,12 @@ public class ToolMESConsumption {
 			int count = 0;
 			double consumption = 0;
 			for(int i = 0; i < meters.size(); i++){
-				count += meters.get(i).getMes_consumption().get(status).getCount();
-				consumption += meters.get(i).getMes_consumption().get(status).getConsumption();
+				if(meters.get(i).getMes_consumption().containsKey(status)){
+					count += meters.get(i).getMes_consumption().get(status).getCount();
+					consumption += meters.get(i).getMes_consumption().get(status).getConsumption();
+				}
 			}
-			count = count/meters.size();
+			count = Math.round((float) count/meters.size());
 			setTotal_consumption(getTotal_consumption() + consumption);
 			this.mes_consumption.put(status, new ConsumptionUnit(count, consumption, consumption/count));
 		}
