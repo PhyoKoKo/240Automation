@@ -15,7 +15,7 @@ import utilities.Utilities;
 public class MeterLogCapturer {
 	private static final String table_prefix = "Meter_log_";
 	private static final String DEVICE_TABLE = "Device";
-	private static final String SQUARE_ROOT_3 = " |\\ 3 ";
+	private static final String SQUARE_ROOT_3 = " |/ 3 ";
 	private static final double REFERENCE_VOLTAGE = 208.0;
 	private static final double REFERENCE_POWER_FACTOR = 0.9;
 	
@@ -36,6 +36,7 @@ public class MeterLogCapturer {
 						+ " from \"" + table + "\" as a, \"" + DEVICE_TABLE + "\" as b "
 						+ " where a.ieee = b.ieee and b.device_desc like '" + mes.getTool() + "%' "
 						+ " and time_stamp >= '" + Utilities.printDateTime(start) + "' and time_stamp < '" + Utilities.printDateTime(end) + "'";
+		
 		try {
 			PreparedStatement stat = conn.prepareCall(sql);
 			ResultSet rs = stat.executeQuery();

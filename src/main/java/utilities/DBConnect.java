@@ -61,12 +61,12 @@ public class DBConnect {
 		try {
 			while (trycount <= 5 && (conn_mes == null || conn_mes.isClosed())){
 				try{	
-					trycount++;
 					//conn_mes = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "ecoadmin", "ev111qer");
 					conn_mes = DriverManager.getConnection("jdbc:oracle:thin:@//10.89.227.44:1522/F7MSDB_TAF","F07EVC_USER","F7EVC_128USR");
 				} catch (SQLException e){
 					System.out.println("Try " + trycount + ": " + e.getMessage());
 				}
+				trycount++;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
