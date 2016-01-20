@@ -3,20 +3,12 @@ package universal.entity;
 import java.util.ArrayList;
 
 public class ToolGroup {
-	private String toolgroup;
+	private String name;
 	private ArrayList<Tool> tools;
 	
 	public ToolGroup(String toolgroup){
-		this.setToolgroup(toolgroup);
+		this.setName(toolgroup);
 		this.setTools(new ArrayList<Tool>());
-	}
-
-	public String getToolgroup() {
-		return toolgroup;
-	}
-
-	public void setToolgroup(String toolgroup) {
-		this.toolgroup = toolgroup;
 	}
 
 	public ArrayList<Tool> getTools() {
@@ -25,5 +17,13 @@ public class ToolGroup {
 
 	public void setTools(ArrayList<Tool> tools) {
 		this.tools = tools;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

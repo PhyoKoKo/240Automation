@@ -23,8 +23,8 @@ public class DBConnect {
 	private static void connect240() {
 		try {
 			Class.forName(POSTGRES_DB_DRIVER);
-			//conn_240 = DriverManager.getConnection("jdbc:postgresql://172.20.193.6:5432/GreenDC","ecoadm", "ev093qer");
-			conn_240 = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/ems3","ecoadm", "ev093qer");
+			conn_240 = DriverManager.getConnection("jdbc:postgresql://172.20.193.6:5432/GreenDC","ecoadm", "ev093qer");
+			//conn_240 = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/ems3","ecoadm", "ev093qer");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,8 +61,8 @@ public class DBConnect {
 		try {
 			while (trycount <= 5 && (conn_mes == null || conn_mes.isClosed())){
 				try{	
-					//conn_mes = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "ecoadmin", "ev111qer");
-					conn_mes = DriverManager.getConnection("jdbc:oracle:thin:@//10.89.227.44:1522/F7MSDB_TAF","F07EVC_USER","F7EVC_128USR");
+					conn_mes = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "ecoadmin", "ev111qer");
+					//conn_mes = DriverManager.getConnection("jdbc:oracle:thin:@//10.89.227.44:1522/F7MSDB_TAF","F07EVC_USER","F7EVC_128USR");
 				} catch (SQLException e){
 					System.out.println("Try " + trycount + ": " + e.getMessage());
 				}

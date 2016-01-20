@@ -3,22 +3,14 @@ package universal.entity;
 import java.util.ArrayList;
 
 public class Tool {
-	private String tool;
+	private String name;
 	private boolean isReference;
 	private ArrayList<Meter> meters;
 	
 	public Tool(String tool, boolean isRef){
-		this.setTool(tool);
+		this.setName(tool);
 		this.setReference(isRef);
 		this.setMeters(new ArrayList<Meter>());
-	}
-
-	public String getTool() {
-		return tool;
-	}
-
-	public void setTool(String tool) {
-		this.tool = tool;
 	}
 
 	public ArrayList<Meter> getMeters() {
@@ -35,5 +27,13 @@ public class Tool {
 
 	public void setReference(boolean isReference) {
 		this.isReference = isReference;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

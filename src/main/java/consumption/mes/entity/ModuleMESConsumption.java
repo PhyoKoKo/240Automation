@@ -32,9 +32,11 @@ public class ModuleMESConsumption {
 			String status = mes_list.next();
 			double consumption = 0, waste = 0;
 			for(int i = 0; i < toolgroups.size(); i++){
-				ConsumptionUnit cu = toolgroups.get(i).getMes_consumption().get(status);
-				consumption += cu.getConsumption();
-				waste += cu.getWaste();
+				if(toolgroups.get(i).getMes_consumption().containsKey(status)){
+					ConsumptionUnit cu = toolgroups.get(i).getMes_consumption().get(status);
+					consumption += cu.getConsumption();
+					waste += cu.getWaste();
+				}
 			}
 			this.mes_consumption.put(status, new ConsumptionUnit(consumption, waste));
 			total_waste += waste;

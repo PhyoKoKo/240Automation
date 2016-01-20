@@ -32,13 +32,13 @@ public class FileLoader {
 				for(int i = 2; i < length - 1; i++)
 					newTool.getMeters().add(new Meter(tool_info[i]));
 				
-				if(map.getModule(module) == null)
+				if(map.getModuleByName(module) == null)
 					map.getModules().add(new Module(module));
 				
-				if(map.getModule(module).getToolGroup(tool_group) == null)
-					map.getModule(module).getToolgroups().add(new ToolGroup(tool_group));
+				if(map.getModuleByName(module).getToolGroupByName(tool_group) == null)
+					map.getModuleByName(module).getToolgroups().add(new ToolGroup(tool_group));
 				
-				map.getModule(module).getToolGroup(tool_group).getTools().add(newTool);
+				map.getModuleByName(module).getToolGroupByName(tool_group).getTools().add(newTool);
 				toolIndex++;
 				
 			}

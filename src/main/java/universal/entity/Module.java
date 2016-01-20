@@ -3,25 +3,18 @@ package universal.entity;
 import java.util.ArrayList;
 
 public class Module {
-	private String module;
+	private String name;
 	private ArrayList<ToolGroup> toolgroups;
 	
 	public Module(String module){
-		this.setModule(module);
+		this.setName(module);
 		this.setToolgroups(new ArrayList<ToolGroup>());
 	}
-	public ToolGroup getToolGroup(String name){
+	public ToolGroup getToolGroupByName(String name){
 		for(int i = 0; i < toolgroups.size(); i++)
-			if(toolgroups.get(i).getToolgroup().equals(name))
+			if(toolgroups.get(i).getName().equals(name))
 				return toolgroups.get(i);
 		return null;
-	}
-	public String getModule() {
-		return module;
-	}
-
-	public void setModule(String module) {
-		this.module = module;
 	}
 
 	public ArrayList<ToolGroup> getToolgroups() {
@@ -30,5 +23,11 @@ public class Module {
 
 	public void setToolgroups(ArrayList<ToolGroup> toolgroups) {
 		this.toolgroups = toolgroups;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }

@@ -11,7 +11,7 @@ import universal.entity.Tool;
 public class ToolMESConsumption {
 	private Tool tool;
 	private ArrayList<MeterMESConsumption> meters;
-	private double total_consumption;
+	private double total_consumption, total_waste;
 	private HashMap<String, ConsumptionUnit> mes_consumption; //ConsumptionUnit: count, consumption, avg_consumption, waste
 	
 	public ToolMESConsumption(Tool tool){
@@ -79,7 +79,7 @@ public class ToolMESConsumption {
 
 	public void print(String prefix) {
 		String space = "----";
-		System.out.println(prefix + "Tool: " + this.tool.getTool() + " total consumption: " + this.total_consumption);
+		System.out.println(prefix + "Tool: " + this.tool.getName() + " total consumption: " + this.total_consumption + " total waste: " + this.total_waste);
 		
 		Iterator<String> mes_list = this.mes_consumption.keySet().iterator();
 		while(mes_list.hasNext()){
@@ -96,6 +96,14 @@ public class ToolMESConsumption {
 			meters.get(i).print(prefix + "----");
 			System.out.println();
 		}
+	}
+
+	public double getTotal_waste() {
+		return total_waste;
+	}
+
+	public void setTotal_waste(double total_waste) {
+		this.total_waste = total_waste;
 	}
 
 	
