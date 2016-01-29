@@ -23,7 +23,7 @@ public class DBConnect {
 	private static void connect240() {
 		try {
 			Class.forName(POSTGRES_DB_DRIVER);
-			conn_240 = DriverManager.getConnection("jdbc:postgresql://172.20.193.6:5432/GreenDC","ecoadm", "ev093qer");
+			conn_240 = DriverManager.getConnection("jdbc:postgresql://172.20.194.233:5432/GreenDC","ecoadm", "ev093qer");
 			//conn_240 = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/ems3","ecoadm", "ev093qer");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

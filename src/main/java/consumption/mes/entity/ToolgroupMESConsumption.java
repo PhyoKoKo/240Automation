@@ -52,7 +52,7 @@ public class ToolgroupMESConsumption {
 			total_consumption += consumption;
 			this.mes_consumption.put(status, new ConsumptionUnit(count, consumption, consumption/count, min_avg_consumption));
 			if(update)
-				ToolgroupMinPowerCapturer.insertMinPower(this.toolgroup.getName(), status, min_avg_consumption);
+				ToolgroupMinPowerCapturer.renewMinPower(this.toolgroup.getName(), status, min_avg_consumption);
 		}
 		
 		//calculate the waste for toolgroup&tool in each status

@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,7 +13,7 @@ import universal.entity.ToolGroup;
 
 public class FileLoader {
 
-	private static final String TOOLS_CONFIG_FILE = "config" + File.separator + "tools.properties";
+	private static final String TOOLS_CONFIG_FILE = "tools.properties";
 	public static Map load(){
 		
 		Map map = new Map();
@@ -20,7 +21,7 @@ public class FileLoader {
 		int toolIndex = 1;
 		try {
 			Properties prop = new Properties();
-			//InputStream input = new FileInputStream(TOOLS_CONFIG_FILE); 
+			//InputStream input = new FileInputStream("../resources" + File.separator + TOOLS_CONFIG_FILE); 
 			InputStream input = FileLoader.class.getResourceAsStream(TOOLS_CONFIG_FILE);
 			prop.load(input);
 			while(prop.containsKey(toolKey + toolIndex)){

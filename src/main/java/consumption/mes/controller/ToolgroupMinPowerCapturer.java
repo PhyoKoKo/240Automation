@@ -25,8 +25,35 @@ public class ToolgroupMinPowerCapturer {
 		
 		return -1;
 	}
+	public static void renewMinPower(String name, String status, double minPower){
+		String sql = "select * from \"" + table + "\" where toolgroup = '" + name + "' and status = '" + status + "'";
+		Connection conn = DBConnect.getConn_240();
+		try {
+			PreparedStatement stat = conn.prepareStatement(sql);
+			ResultSet rs = stat.executeQuery();
+			if(rs.next())
+				updateMinPower(name, status, minPower);
+			else
+				insertMinPower(name, status, minPower);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
-	public static void insertMinPower(String name, String status, double minPower){
+	private static void updateMinPower(String name, String status, double minPower){
+		String sql = "update \"" + table + "\" set power_min = " + minPower + " where toolgroup = '" + name + "' and status = '" + status + "'";
+		Connection conn = DBConnect.getConn_240();
+		
+		try {
+			PreparedStatement stat = conn.prepareStatement(sql);
+			stat.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	private static void insertMinPower(String name, String status, double minPower){
 		String sql = "insert into \"" + table + "\" values('" + name + "', '" + status + "', " + minPower + ")";
 		Connection conn = DBConnect.getConn_240();
 		

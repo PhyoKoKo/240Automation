@@ -76,4 +76,23 @@ public class ModuleMESConsumption {
 		this.total_consumption = total_consumption;
 	}
 	private double total_waste, total_consumption;
+
+	public void print(String prefix) {
+		String space = "----";
+		System.out.println(prefix + "Module: " + this.module.getName() + " total consumption: " + this.total_consumption + " total waste: " + this.total_waste);
+		
+		Iterator<String> mes_list = this.mes_consumption.keySet().iterator();
+		while(mes_list.hasNext()){
+			String status = mes_list.next();
+			System.out.println(prefix + space + status + ": ");
+			System.out.println(prefix + space + space + "Consumption: " + mes_consumption.get(status).getConsumption());
+			System.out.println(prefix + space + space + "Waste: " + mes_consumption.get(status).getWaste());
+		}
+		System.out.println();
+		
+		for(int i = 0; i < this.toolgroups.size(); i++){
+			toolgroups.get(i).print(prefix + "----");
+			System.out.println();
+		}
+	}
 }

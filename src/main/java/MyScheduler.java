@@ -3,6 +3,7 @@ import javax.ejb.Stateless;
 
 import org.joda.time.DateTime;
 
+import consumption.mes.controller.ModuleMESConsumptionCapturer;
 import datacombination.controller.ToolUpdater;
 import universal.entity.Map;
 import universal.entity.Module;
@@ -27,6 +28,11 @@ public class MyScheduler{
 				for(int k = 0; k < tg.getTools().size(); k++)
 					ToolUpdater.updateToolWithDate(tg.getTools().get(k), Utilities.printDate(yesterday));
 			}
+		}
+		
+		for(int i = 0; i < map.getModules().size(); i++){
+			Module m = map.getModules().get(i);
+			ModuleMESConsumptionCapturer.getConsumption(m, Utilities.printDate(yesterday), Utilities.printDate(yesterday));
 		}
    }
 } 
