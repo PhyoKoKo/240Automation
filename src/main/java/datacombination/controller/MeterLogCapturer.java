@@ -43,6 +43,7 @@ public class MeterLogCapturer {
 			while(rs.next()){
 				CombinedRecordUpdater.update(new CombinedRecord(rs.getString(1), rs.getString(2), rs.getDouble(3), mes.getStatus()));
 			}
+			rs.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

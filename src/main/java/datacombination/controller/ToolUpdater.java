@@ -1,10 +1,12 @@
 package datacombination.controller;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.joda.time.DateTime;
 
 import datacombination.entity.MES;
 import universal.entity.Tool;
+import utilities.DBConnect;
 import utilities.Utilities;
 
 public class ToolUpdater {
@@ -22,5 +24,13 @@ public class ToolUpdater {
 			updateToolWithDate(tool, Utilities.printDate(start));
 			start = start.plusDays(1);
 		}
+		try {
+			DBConnect.getConn_240().close();
+			DBConnect.getConn_mes().close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

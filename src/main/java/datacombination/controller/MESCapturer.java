@@ -29,6 +29,7 @@ public class MESCapturer {
 			while(rs.next()){
 				MESlist.add(new MES(rs.getString(2), rs.getString(4), rs.getString(1), rs.getString(3)));
 			}
+			rs.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
