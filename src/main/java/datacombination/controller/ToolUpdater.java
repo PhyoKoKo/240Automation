@@ -13,7 +13,8 @@ public class ToolUpdater {
 	public static void updateToolWithDate(Tool tool, String date){
 		ArrayList<MES> meslist = MESCapturer.capture(tool, date);
 		for(int i = 0; i < meslist.size(); i++)
-			MeterLogCapturer.capture(tool, meslist.get(i), date);
+			for(int j = 0; j < tool.getMeters().size(); j++)
+			MeterLogCapturer.capture(tool.getMeters().get(j), tool.isReference(), meslist.get(i), date);
 	}
 	public static void updateToolWithDateRange(Tool tool, String start_date, String end_date){
 		DateTime start = Utilities.parseDateTime(start_date), end = Utilities.parseDateTime(end_date);
