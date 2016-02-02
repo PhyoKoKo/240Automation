@@ -39,7 +39,8 @@ public class CombinedRecordUpdater {
 									+ " (time_stamp timestamp without time zone NOT NULL, "
 									+ " ieee character varying NOT NULL, "
 									+ " total_kW double precision, "
-									+ " MES character varying)";
+									+ " MES character varying,"
+									+ "CONSTRAINT \"" + table + "_pkey\" PRIMARY KEY (time_stamp, ieee))";
 				conn.prepareStatement(create_sql).executeUpdate();
 			}
 		}catch(SQLException e){
